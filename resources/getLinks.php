@@ -1,6 +1,6 @@
 <?php 
-
-$url = $_POST["url"];
+$url = $_GET['url'];
+//https://yuki.la/wsg/1050254
 
 function parseLinks($url){
 	$html = file_get_contents($url);
@@ -14,18 +14,16 @@ function parseLinks($url){
 
 	foreach ($links as $link) {
 		array_push($arrLinks,  $link->getAttribute('href'));
-	}
+	}	
 
-	array_filter($arrLinks,function($value){
-		if(stripos($value, '.webm')){
-			echo "<video controls width='400' heigth='400'>"
-			."<source src='{$value}' type='video/webm'>"
-			."</video>";
-			die();
-		}
-		
+	array_push($arrVideos,"oie");
+
+	$arrVideos = array_filter($arrLinks,function($value){
+		if(stripos($value, '.webm')){	
+			return true;
+		}		
 	});
-
+	return $arrVideos;
 } 
-parseLinks($url);
+
 ?>
