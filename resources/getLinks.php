@@ -1,6 +1,9 @@
 <?php 
-function parseLinks(){
-	$html = file_get_contents('https://yuki.la/wsg/1050254');
+
+$url = $_POST["url"];
+
+function parseLinks($url){
+	$html = file_get_contents($url);
 	$dom = new DOMDocument;
 	$arrLinks = array();
 	$arrVideos = array();
@@ -24,6 +27,5 @@ function parseLinks(){
 	});
 
 } 
-
-parseLinks();
+parseLinks($url);
 ?>

@@ -3,13 +3,13 @@
 	require_once("header.php");
 ?>
 
-<form action="" method="post">
+<form action="resources/getLinks.php" method="post">
 	<table class="">
 		<tr>
 			<td>Url</td>
-			<td><input type="text"></td>
+			<td><input type="text" name="url"></td>
 			<td>
-				<button>Get</button>
+				<button class="btn btn-primary" type="submit">Get</button>
 			</td>
 		</tr>
 	</table>
