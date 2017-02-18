@@ -1,0 +1,9 @@
+body { padding-bottom: 70px; }
+
+.main{
+	padding-top: 100px;
+}
+
+.main table td{
+	padding: 5px;
+}

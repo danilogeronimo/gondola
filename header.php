@@ -4,16 +4,19 @@
 <html lang="pt-br">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Simple Site</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/gondola.css">
+    <title>Gondola - The Observers</title>
 </head>
  
 <body>
-<div id="header">
-    <h1>Simple Site</h1>
-    <ul class="nav global">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Articles</a></li>
-        <li><a href="#">Portfolio</a></li>
-    </ul>
- 
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="index.php">Gondola - The Observers</a>
+		</div> 
+	</div>
 </div>
+
+<div class="container">
+	<div class="main">
