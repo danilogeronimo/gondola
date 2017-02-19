@@ -1,7 +1,7 @@
-		<div class="navbar navbar-default navbar-fixed-bottom">
-			Rodapé
+		<div class="footer navbar navbar-default navbar-fixed-bottom">
+			Copyright
 		</div>
-	</div>
-</div>
+</div> <!-- main -->
+</div> <!-- container -->
 </body>
 </html>

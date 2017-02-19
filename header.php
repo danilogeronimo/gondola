@@ -6,14 +6,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/gondola.css">
-    <title>Gondola - The Observers</title>
+    <title>Gondola</title>
 </head>
  
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="index.php">Gondola - The Observers</a>
+			<a class="navbar-brand" href="index.php">Gondola - webm downloader</a>
 		</div> 
 	</div>
 </div>
