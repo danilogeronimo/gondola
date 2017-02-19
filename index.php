@@ -6,7 +6,7 @@
 
 	//$links = parseLinks($url);
 ?>
-<h1>Put your gondola thread link</h1>
+<h1>Paste a webm thread link</h1>
 
 <form action="" method="get">
 	<table class="">
@@ -21,14 +21,15 @@
 </form>
 
 <?php	
-	require_once("./resources/getLinks.php");
-	$videos = parseLinks($_GET['url']);	
-	foreach ($videos as $video) {
+	if(isset($_GET['url'])){
+		require_once("./resources/getLinks.php");
+		$videos = parseLinks($_GET['url']);	
+		foreach ($videos as $video) { ?>
+			<video controls width="200" height="200">
+				<source type="video/webm" src="<?=$video?>">
+			</video>	
+		<?php
+		}			
+	}
 ?>
-	<video controls width="200" height="200">
-		<source type="video/webm" src="<?=$video?>">
-	</video>	
-	<?php } ?>
-?>
-
 <?php require_once("footer.php");?>
