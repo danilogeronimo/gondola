@@ -2,6 +2,7 @@
 	require_once("./resources/config.php");	
 	require_once("header.php");
 ?>
+
 <h1>Paste a webm thread link</h1>
 
 <form action="" method="get">
@@ -16,22 +17,22 @@
 	</table>
 </form>
 <div class="row">
-<form action="" method=post>
-<?php	
+<?php
 	if(isset($_GET['url'])){
 		require_once("./resources/getLinks.php");
-		$videos = parseLinks($_GET['url']);	
+		$videos = parseLinks($_GET['url']);
+
 		foreach ($videos as $video) { ?>
 			<div class="thumbnail col-sm-2 ">
-				<input type="checkbox">				
+				<!-- <input type="checkbox">				 -->
+				<a href="<?=$video?>" target="_blank">Download</a>
 				<video controls width="175" height="180">
 					<source type="video/webm" src="<?=$video?>">
 				</video>	
-			</div><!-- videos -->			
+			</div><!-- videos -->		
 		<?php
-		}			
+		}				
 	}
 ?>
-</form>
 </div><!-- row -->	
 <?php require_once("footer.php");?>
