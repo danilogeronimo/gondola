@@ -20,18 +20,21 @@
 <?php
 	if(isset($_GET['url'])){
 		require_once("./resources/getLinks.php");
-		$videos = parseLinks($_GET['url']);
-
-		foreach ($videos as $video) { ?>
-			<div class="thumbnail col-sm-2 ">
-				<!-- <input type="checkbox">				 -->
-				<a href="<?=$video?>" target="_blank">Download</a>
-				<video controls width="175" height="180">
-					<source type="video/webm" src="<?=$video?>">
-				</video>	
-			</div><!-- videos -->		
-		<?php
-		}				
+		 $videos = parseLinks($_GET['url']);
+		if(!is_String($videos)){
+			foreach ($videos as $video) { ?>
+				<div class="thumbnail col-sm-2 ">
+					<!-- <input type="checkbox">				 -->
+					<a href="<?=$video?>" target="_blank">Download</a>
+					<video controls width="175" height="180">
+						<source type="video/webm" src="<?=$video?>">
+					</video>	
+				</div><!-- videos -->		
+			<?php
+			}		
+		}else{
+			echo $videos;
+		}
 	}
 ?>
 </div><!-- row -->	
