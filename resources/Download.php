@@ -1,17 +1,18 @@
 <?php 
-if(isset($_POST['download'])){
-	
+if(isset($_POST['download'])){	
 	if(!empty($_POST['check_list'])) {
-		// Counting number of checked checkboxes.
-		$checked_count = count($_POST['check_list']);
+		$selecteds = $_POST['check_list'];
+		$checked_count = count($selecteds);
 		echo "You have selected following ".$checked_count." option(s): <br/>";
-		// Loop to store and display values of individual checked checkbox.
-		foreach($_POST['check_list'] as $selected) {			
-			$content = file_get_contents('http:'.$selected);
-			$fp = fopen("./Downloads/t.webm","w");
-			fwrite($fp,$content);
+		
+		for($i=0; $i<$checked_count;$i++){
+			$content = file_get_contents('http:'.$selecteds[$i]);
+			$fp = fopen("./Downloads/$i.webm","w");
+			fwrite($fp, $content);
 			fclose($fp);
 		}
+		header('Location: ../index.php');
+		
 	}else{
 		echo "you selected nothing. :p";
 	}
