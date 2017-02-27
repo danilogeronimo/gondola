@@ -9,6 +9,7 @@ Class GetDomElements{
 		$this->url = $url;
 
 		if($url !== ""){
+			// Error control operator, should not use! http://pt.stackoverflow.com/questions/84178/por-que-dizem-que-utilizar-arroba-pra-suprimir-erros-%c3%a9-uma-m%c3%a1-pr%c3%a1tica
 			if(@$html = file_get_contents($url)){
 				@$dom->loadHTML($html);
 				$this->links = $dom->getElementsByTagName('a');				
@@ -22,12 +23,10 @@ Class GetDomElements{
 
 	public function getLinks(){		
 		$links = $this->links;
-		$arrLinks = array();	
-		$arrVideos = array();
+		$arrLinks = array();;
 		$arrDomLinks = array();
-		$compareWebms = "";	
-
 		$i = 0;
+
 		foreach ($links as $link) {		
 			$arrDomLinks[$i]['link'] = $link->getAttribute('href');
 			$arrDomLinks[$i]['name'] = $link->nodeValue;
