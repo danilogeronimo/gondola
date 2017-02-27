@@ -3,8 +3,6 @@ A simple webm downloader.
 
 <!-- ********** TODO LIST ********* --> 
 <!-- 
-file names
-progress bar (control)
 download selected
 sauce
 rating (replies)
