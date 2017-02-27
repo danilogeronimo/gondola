@@ -18,7 +18,7 @@
 </form>
 <div class="row">
 	<form action="resources/Download.php" method="post">
-	<input type="submit" name="download">
+	<input type="submit" name="download" value="Download">
 	<?php
 		if(isset($_GET['url'])){
 			require_once("./resources/GetDomElements.php");
