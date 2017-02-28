@@ -18,7 +18,7 @@
 </form>
 <div class="row">
 	<form action="resources/Download.php" method="post">
-	<input type="submit" name="download" value="Download">
+	<!-- <input type="submit" name="formSubmit" value="Download"> -->		
 	<?php
 		if(isset($_GET['url'])){
 			require_once("./resources/GetDomElements.php");
@@ -31,7 +31,8 @@
 						<video controls width="175" height="180">
 							<source type="video/webm" src="<?=$video['link']?>">
 						</video>	
-						<input type="checkbox" name="check_list[]" value="<?=$video['link']?>">
+						<input type="checkbox" name="links[]" value="<?=$video['link']?>">
+						<input type="hidden" name="names[]" value="<?=$video['name']?>">
 					</div><!-- videos -->		
 				<?php
 				}		
@@ -39,7 +40,7 @@
 				echo $videos;
 			}
 		}
-	?>
+	?>	<input type="submit" name="formSubmit" value="Download">
 	</form>
 </div><!-- row -->	
 <?php require_once("footer.php");?>
