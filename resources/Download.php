@@ -9,7 +9,7 @@ foreach($links as $name){
 			$content = file_get_contents('http:'.$nl);			
 		}
 		else{
-			$fp = fopen("../Downloads/$nl","w");	
+			$fp = fopen("../../Downloads/$nl","w");	
 			fwrite($fp, $content);
 			fclose($fp);			
 		}			
