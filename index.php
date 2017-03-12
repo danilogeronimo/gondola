@@ -27,7 +27,7 @@
 				foreach ($videos as $video) {?>
 					<div class="thumbnail col-sm-2">
 						<a href="<?=$video['link']?>" target="_blank"><?=$video['name']?></a>
-						<video controls width="175" height="180">
+						<video controls width="175" height="180" loop onmouseover="this.play()" onmouseout="this.pause()">
 							<source type="video/webm" src="<?=$video['link']?>">
 						</video>	
 						<input type="checkbox" name="link[]" value="<?=$video['link']?>|<?=$video['name']?>">
