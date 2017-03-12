@@ -1,14 +1,20 @@
 <?php 
-$names = $_POST['names'];
-$links = $_POST['links'];
-if(!empty($names)){
-	$c = count($links);
-	for($i=0; $i<$c;$i++){
-		$content = file_get_contents('http:'.$links[$i]);
-		$fp = fopen("../Downloads/$names[$i]","w");
-		fwrite($fp, $content);
-		fclose($fp);		
+$links = $_POST['link'];
+
+foreach($links as $name){
+	$namesLinks = explode("|",$name);
+	foreach($namesLinks as $nl){
+		$pattern = "/^\/\//";
+		if(preg_match($pattern,$nl,$matches)){
+			$content = file_get_contents('http:'.$nl);			
+		}
+		else{
+			$fp = fopen("../Downloads/$nl","w");	
+			fwrite($fp, $content);
+			fclose($fp);			
+		}			
 	}
-	header('Location: ../index.php');
 }
+header('Location: ../index.php');
+
 ?>
