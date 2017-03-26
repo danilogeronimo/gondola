@@ -3,22 +3,28 @@
 Class GetDomElements{
 	public $url;
 	public $links;
+	public $subject;
 
 	function __construct($url){
-		$dom = new DOMDocument;
+		$dom = new DOMDocument;		
 		$this->url = $url;
-
+		
 		if($url !== ""){
 			// Error control operator, should not use! http://pt.stackoverflow.com/questions/84178/por-que-dizem-que-utilizar-arroba-pra-suprimir-erros-%c3%a9-uma-m%c3%a1-pr%c3%a1tica
 			if(@$html = file_get_contents($url)){
 				@$dom->loadHTML($html);
-				$this->links = $dom->getElementsByTagName('a');				
+				$this->links = $dom->getElementsByTagName('a');	
+				$this->subject = $dom->getElementsByTagName('span');	
 			}else{
 				return "The thread doesn't exist :p";
 			}
 		}else{
 			return "You forgot to paste a thread :p";
 		}
+	}
+
+	public function getSubject(){
+		
 	}
 
 	public function getLinks(){		
@@ -41,6 +47,7 @@ Class GetDomElements{
 
 		return $arrLinks;		
 	}
+
 }
 
 

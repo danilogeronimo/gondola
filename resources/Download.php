@@ -1,5 +1,6 @@
 <?php 
 $links = $_POST['link'];
+$c = count($links);
 
 foreach($links as $name){
 	$namesLinks = explode("|",$name);
@@ -15,6 +16,14 @@ foreach($links as $name){
 		}			
 	}
 }
-header('Location: ../index.php');
+// header('Location: ../index.php');
+echo "
+	<script>
+		(function (){
+			javascript:history.go(-1);
+			alert('Downloaded $c webms');	
+		})();
+	</script>
+";
 
 ?>

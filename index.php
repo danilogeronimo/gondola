@@ -3,40 +3,66 @@
 	require_once("header.php");
 ?>
 
-<h1>Paste a webm thread link</h1>
-
-<form action="" method="get">
-	<table class="">
-		<tr>
-			<td>Url</td>
-			<td><input type="text" name="url"></td>
-			<td>
-				<input type="submit" value="Feel">
-			</td>
-		</tr>
-	</table>
-</form>
-<div class="row">
-	<form action="resources/Download.php" method="post">
-	<?php
-		if(isset($_GET['url'])){
-			require_once("./resources/GetDomElements.php");
-			$elements = new GetDomElements($_GET['url']);
-			$videos = $elements->getLinks();
-			if(!is_String($videos)){
-				foreach ($videos as $video) {?>
-					<div class="thumbnail col-sm-2">
-						<a href="<?=$video['link']?>" target="_blank"><?=$video['name']?></a>
-						<video controls width="175" height="180" loop onmouseover="this.play()" onmouseout="this.pause()">
-							<source type="video/webm" src="<?=$video['link']?>">
-						</video>	
-						<input type="checkbox" name="link[]" value="<?=$video['link']?>|<?=$video['name']?>">
-					</div><!-- videos -->		
-				<?php
-				}		
-			}
-		}
-	?>	<input type="submit" name="formSubmit" value="Download">
+<div class="search img-thumbnail">
+	<h1>Paste a webm thread link</h1>
+	<form action="" method="get">
+		<table >
+			<tr>
+				<td>Url</td>
+				<td><input type="text" name="url"></td>
+				<td>
+					<button type="submit" class="btn btn-default btn-success">Feel</button>
+				</td>
+			</tr>
+		</table>
 	</form>
-</div><!-- row -->	
+</div><!-- search -->
+<div class="videos">
+	<div class="row">
+		<form action="resources/Download.php" method="post">		
+		<?php
+			if(isset($_GET['url'])){
+				require_once("./resources/GetDomElements.php");
+				$elements = new GetDomElements($_GET['url']);
+				$videos = $elements->getLinks();
+				$sub = $elements->getSubject();
+				echo $sub;
+				if(!is_String($videos)){
+					foreach ($videos as $video) {?>					
+						<div class="thumbnail col-sm-2">
+							<a href="<?=$video['link']?>" target="_blank"><?=$video['name']?></a>
+							<input class="checkbox" type="checkbox" name="link[]" value="<?=$video['link']?>|<?=$video['name']?>">
+							<video controls loop onmouseover="this.play()" onmouseout="this.pause()">
+								<source type="video/webm" src="<?=$video['link']?>">
+							</video>							
+						</div><!-- thumbnail -->		
+					<?php
+					}		
+				}
+			}
+		?>	<button type="submit" name="formSubmit" class="btn btn-primary" id="btnSub">
+				Download
+			</button>
+		</form>
+	</div><!-- row -->
+</div><!-- videos -->
+<button class=" btn btn-info"onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+<script>
+	window.onscroll = function() {
+		scrollFunction();
+	};	
+
+	function scrollFunction() {
+	    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+	        document.getElementById("myBtn").style.display = "block";
+	    } else {
+	        document.getElementById("myBtn").style.display = "none";
+	    }
+	}
+	function topFunction() {
+	    document.body.scrollTop = 0; // For Chrome, Safari and Opera 
+	    document.documentElement.scrollTop = 0; // For IE and Firefox
+	}
+	
+</script>
 <?php require_once("footer.php");?>
