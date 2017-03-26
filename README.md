@@ -2,9 +2,9 @@
 A simple webm downloader.
 
 <!-- /////////// TODO ////////////////// 
-sauce
-rating (replies)
+thread name
 design 
+
 
 ///////////////////////////////////
 
@@ -15,6 +15,8 @@ autoplay
 gif
 images
 gondola maker  
+sauce
+rating (replies)
 
 
 

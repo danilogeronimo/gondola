@@ -6,6 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/gondola.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <title>Gondola</title>
 </head>
  
@@ -13,7 +14,8 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="index.php">Gondola - webm downloader</a>
+			<div class="logo"><img src="./img/logo.png" alt=""></div>
+			<a class="navbar-brand title" href="index.php"><img src="img/title.png" alt=""></a>
 		</div> 
 	</div>
 </div>
