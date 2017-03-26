@@ -34,7 +34,7 @@ Class GetDomElements{
 			echo "<script>
 				alert('Thread not found :p');
 				(function (){
-					javascript:history.go(-1);	
+					window.location.replace('index.php');
 				})();
 		</script>";
 		}else{
