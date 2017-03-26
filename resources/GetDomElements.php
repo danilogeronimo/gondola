@@ -29,23 +29,34 @@ Class GetDomElements{
 
 	public function getLinks(){		
 		$links = $this->links;
-		$arrLinks = array();;
-		$arrDomLinks = array();
-		$i = 0;
+		
+		if($links == ""){
+			echo "<script>
+				alert('Thread not found :p');
+				(function (){
+					javascript:history.go(-1);	
+				})();
+		</script>";
+		}else{
+			$arrLinks = array();
+			$arrDomLinks = array();
+			$i = 0;
 
-		foreach ($links as $link) {		
-			$arrDomLinks[$i]['link'] = $link->getAttribute('href');
-			$arrDomLinks[$i]['name'] = $link->nodeValue;
-			$i++;
-		}	
+			foreach ($links as $link) {		
+				$arrDomLinks[$i]['link'] = $link->getAttribute('href');
+				$arrDomLinks[$i]['name'] = $link->nodeValue;
+				$i++;
+			}	
 
-		$arrLinks = array_filter($arrDomLinks,function($value){
-			if(stripos($value['link'],'.webm') && stripos($value['name'],'.webm')){
-				return true;
-			}
-		});	
+			$arrLinks = array_filter($arrDomLinks,function($value){
+				if(stripos($value['link'],'.webm') && stripos($value['name'],'.webm')){
+					return true;
+				}
+			});	
 
-		return $arrLinks;		
+			return $arrLinks;					
+		}
+
 	}
 
 }
