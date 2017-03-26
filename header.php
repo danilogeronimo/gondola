@@ -15,8 +15,7 @@
 	<div class="container">
 		<div class="navbar-header">
 			<div class="logo"><img src="./img/logo.png" alt=""></div>
-			<img class="title" src="img/title.png" alt="Gondola">
-			<a class="navbar-brand" href="index.php">Gondola - webm downloader</a>
+			<a class="navbar-brand title" href="index.php"><img src="img/title.png" alt=""></a>
 		</div> 
 	</div>
 </div>
