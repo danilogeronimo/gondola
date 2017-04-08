@@ -20,5 +20,8 @@
 	</div>
 </div>
 
+<div class="trendContainer">
+	<?php require_once("trendings.php"); ?>
+</div>
 <div class="container">
 	<div class="main">
