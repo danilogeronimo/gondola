@@ -4,19 +4,24 @@
 </div> <!-- main -->
 </div> <!-- container -->
 <script>
-	$(document).ready(function() {
-    	var $submit = $("#btnSub").hide(),
-        	$cbs = $('input[name="link[]"]').click(function() {
-         	   $submit.toggle( $cbs.is(":checked") );
-       		});
+	$(document).ready(function(){		
+    	var submit = $("#btnSub").hide(),
+        	cbs = $('input[name="link[]"]').click(function() {
+           submit.toggle( cbs.is(":checked") );
+       	});
+
+        if (document.addEventListener) {
+	        document.addEventListener('contextmenu', function(e) {
+	            var links = this.activeElement.attributes[1].value;
+	            copyToClipboard(links);
+	            e.preventDefault();
+	        }, false);
+  		}    
 	});
+	
 	function copyToClipboard(text) {
     	window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
 	}
-
-	$('#test').click(function() {
-  		 copyToClipboard('bobo');
-	});
 
 	window.onscroll = function() {
 		scrollFunction();
