@@ -25,8 +25,7 @@
 				require_once("./resources/GetDomElements.php");
 				$elements = new GetDomElements($_GET['url']);
 				$videos = $elements->getLinks();
-				$sub = $elements->getSubject();
-				echo $sub;
+				
 				if(!is_String($videos)){
 					foreach ($videos as $video) {?>					
 						<div class="thumbnail col-sm-2">
