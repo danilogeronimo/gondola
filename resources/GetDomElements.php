@@ -4,6 +4,7 @@ Class GetDomElements{
 	public $url;
 	public $links;
 	public $subject;
+	public $imgs;
 
 	function __construct($url){
 		$dom = new DOMDocument;		
@@ -14,7 +15,9 @@ Class GetDomElements{
 			if(@$html = file_get_contents($url)){
 				@$dom->loadHTML($html);
 				$this->links = $dom->getElementsByTagName('a');	
-				$this->subject = $dom->getElementsByTagName('span');	
+				//$this->subject = $dom->getElementsByTagName('span');
+				$teste = $dom->getElementsByTagName('img');
+
 			}else{
 				return "The thread doesn't exist :p";
 			}
@@ -23,20 +26,15 @@ Class GetDomElements{
 		}
 	}
 
-	public function getSubject(){
-		
-	}
-
 	public function getLinks(){		
 		$links = $this->links;
-		
 		if($links == ""){
 			echo "<script>
-				alert('Thread not found :p');
-				(function (){
-					window.location.replace('index.php');
-				})();
-		</script>";
+					alert('Thread not found :p');
+					(function (){
+						window.location.replace('index.php');
+					})();
+				</script>";
 		}else{
 			$arrLinks = array();
 			$arrDomLinks = array();

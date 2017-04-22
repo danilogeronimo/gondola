@@ -1,29 +1,44 @@
 <?php 
-$links = $_POST['link'];
-$c = count($links);
 
-foreach($links as $name){
-	$namesLinks = explode("|",$name);
-	foreach($namesLinks as $nl){
-		$pattern = "/^\/\//";
-		if(preg_match($pattern,$nl,$matches)){
-			$content = file_get_contents('http:'.$nl);			
+if(isset($_POST['link']) == true){	
+	$links = $_POST['link'];
+	if(count($links) > 1){		
+		$files = array();
+		$zip = new ZipArchive();
+		$tmp_file = tempnam('.', '');
+		$zip->open($tmp_file,ZipArchive::CREATE);
+
+		foreach ($links as $values) {
+			list($link, $name) = explode("|", $values);
+			$download_file = file_get_contents('http:'.$link);
+			$zip->addFromString(basename($name),$download_file);
 		}
-		else{
-			$fp = fopen("../../Downloads/$nl","w");	
-			fwrite($fp, $content);
-			fclose($fp);			
-		}			
+
+		$zip->close();
+
+		header('Content-disposition: attachment; filename="Have_a_nice_day.zip"');
+		header('Content-type: application/zip');
+		readfile($tmp_file);
+		unlink($tmp_file);
 	}
+	else{
+		foreach($links as $values){
+			list($link, $name) = explode("|", $values);
+			$download_file = file_get_contents('http:'.$link);
+			header('Content-Description: File Transfer');
+		    header('Content-Type: application/octet-stream');
+		    header("Content-disposition: attachment; filename=".str_replace(' ', '_', $name));
+		    header('Content-Length: '.strlen($download_file));
+		    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+		    header('Expires: 0');
+		    header('Pragma: public');
+		    echo $download_file;
+		    exit;
+		}
+	}
+
 }
-// header('Location: ../index.php');
-echo "
-	<script>
-		(function (){
-			javascript:history.go(-1);
-			alert('Downloaded $c webms');	
-		})();
-	</script>
-";
+
+
 
 ?>
